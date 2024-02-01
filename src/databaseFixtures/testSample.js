@@ -1,4 +1,4 @@
-const testTubes = [
+const testSamples = [
   {
     id: '1',
     patientAge: 14,

@@ -1,8 +1,11 @@
+import { Room } from './room.type';
+import { Laboratory } from './laboratory.type';
+
 export interface Rack {
   id: string;
   location: {
-    laboratoryId: string;
-    roomId: string;
+    laboratory: Laboratory;
+    room: Room;
   },
   storageConditions: {
     ageMin: number;
@@ -11,5 +14,6 @@ export interface Rack {
     cityDistrictId: string;
     companyId: string;
     vistionDefectId: string;
-  }
+  },
+  testSamplesIds: string[];
 }

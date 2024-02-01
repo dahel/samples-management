@@ -3,7 +3,7 @@ const patientsLocations = [
   {
     name: 'Poznań',
     id: 'poznan',
-    disctricts: [
+    districts: [
       {
         id: 'wilda',
         name: 'Wilda'
@@ -17,7 +17,7 @@ const patientsLocations = [
   {
     name: 'Warszawa',
     id: 'warsaw',
-    disctricts: [
+    districts: [
       {
         id: 'praga',
         name: 'Praga'

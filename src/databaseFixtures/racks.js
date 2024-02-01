@@ -1,4 +1,5 @@
 // todo convert to json
+// align to ts
 const racks = [
   {
     id: '1',
@@ -13,7 +14,10 @@ const racks = [
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [
+      '1'
+    ]
   },
   {
     id: '2',
@@ -28,7 +32,8 @@ const racks = [
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '3',
@@ -43,7 +48,8 @@ const racks = [
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '4',
@@ -58,7 +64,8 @@ const racks = [
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-2'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '5',
@@ -73,7 +80,8 @@ const racks = [
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-3'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '6',
@@ -88,7 +96,8 @@ const racks = [
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '7',
@@ -103,7 +112,8 @@ const racks = [
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '8',
@@ -118,7 +128,8 @@ const racks = [
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-1'
-    }
+    },
+    testSamplesIds: [],
   },
   {
     id: '9',
@@ -133,7 +144,8 @@ const racks = [
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
       vistionDefectId: 'vision-defect-2'
-    }
+    },
+    testSamplesIds: [],
   },
 ];
 

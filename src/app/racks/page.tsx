@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { fetchRacks } from "@/app/_utils/apiClient/apiClient";
-import { Rack } from "@/types/rack";
-import { RestApiResponse } from "@/types/response.type";
+import { fetchRacks } from "app/_utils/apiClient/apiClient";
+import { Rack } from "types/rack.type";
+import { RestApiResponse } from "types/response.type";
 
 // share it with apiClient for client side calls
 //  todo move data: Rack[] to generic
@@ -20,16 +20,30 @@ async function getRacksCollection(): Promise<RestApiResponse<Rack[]>> {
 export default async function Racks() {
   const { data: racksCollection } = await getRacksCollection();
 
-  console.log('############################## racksCollection', racksCollection);
-
   return (
     <div>
-      <div>Available racks</div>
-      <ul>
-        {racksCollection.map((rackItem) => {
-          return <li key={rackItem.id}>{rackItem.id}</li>
-        })}
-      </ul>
+      <table className="table w-[500px] text-center">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Laboratory</th>
+        <th>Room</th>
+        <th>Samples amount</th>
+      </tr>
+    </thead>
+    <tbody>
+    {racksCollection.map((rackItem) => {
+      return (
+        <tr key={rackItem.id}>
+          <td>{rackItem.id}</td>
+          <td>{rackItem.location.laboratory.name}</td>
+          <td>{rackItem.location.room.name}</td>
+          <td>{rackItem.testSamplesIds.length}</td>
+        </tr>
+      )
+    })}
+    </tbody>
+  </table>
     </div>
   );
 }
