@@ -1,13 +1,14 @@
 import Image from "next/image";
-import { fetchRacks } from "app/_utils/apiClient/apiClient";
 import { Rack } from "types/rack.type";
 import { RestApiResponse } from "types/response.type";
-import SampleForm from "app/_components/sampleForm/SampleForm";
+import SampleForm from "app/add-sample/sampleForm/SampleForm";
 import { PatientLocation } from "types/patientLocation.type";
 import { PatientCompany } from "types/patientCompany.type";
+import { VisionDefect } from "types/visionDefect.type";
+import { fetchEndpointData } from "app/_utils/apiClient";
 
-async function getCompanies(): Promise<RestApiResponse<PatientCompany[]>> {
-  const response  = await fetch(`${process.env.REST_API_URL}/companies`);
+async function getLocations(): Promise<RestApiResponse<PatientLocation[]>> {
+  const response  = await fetch(`${process.env.REST_API_URL}/locations`);
 
   if (!response.ok) {
     // todo handle error
@@ -17,10 +18,9 @@ async function getCompanies(): Promise<RestApiResponse<PatientCompany[]>> {
 
   return response.json();
 }
-
 // todo remove other Colection from name of the getters
-async function getLocations(): Promise<RestApiResponse<PatientCompany[]>> {
-  const response  = await fetch(`${process.env.REST_API_URL}/locations`);
+async function getVisionDefects(): Promise<RestApiResponse<PatientLocation[]>> {
+  const response  = await fetch(`${process.env.REST_API_URL}/vision-defects`);
 
   if (!response.ok) {
     // todo handle error
@@ -32,12 +32,14 @@ async function getLocations(): Promise<RestApiResponse<PatientCompany[]>> {
 }
 
 export default async function AddSample() {
-  const { data: companies } = await getCompanies();
-  const { data: locations } = await getLocations();
+  // todo check trpc
+  const { data: companies } = await fetchEndpointData<PatientCompany[]>('companies');
+  const { data: locations } = await fetchEndpointData<PatientLocation[]>('locations');
+  const { data: visionDefects } = await fetchEndpointData<VisionDefect[]>('companies');
 
   return (
     <div>
-      <SampleForm companies={companies} locations={locations} />
+      <SampleForm companies={companies} locations={locations} visionDefects={visionDefects} />
     </div>  
   );
 }
