@@ -66,7 +66,7 @@ const laboratories = [
   },
 ];
 
-const collection = combinations.map(([age, patientDistrictId, patientCompanyId, vistionDefectId ]) => {
+const collection = combinations.map(([age, patientDistrictId, patientCompanyId, visionDefectId ]) => {
   const laboratory = laboratories.find(lab => {
     return lab.rooms.find(room => {
       return room.patientDistrictId === patientDistrictId;
@@ -81,7 +81,7 @@ const collection = combinations.map(([age, patientDistrictId, patientCompanyId, 
       ageMax: age.ageMax,
       patientDistrictId,
       patientCompanyId,
-      vistionDefectId,
+      visionDefectId,
       location: {
         laboratoryId: laboratory.id,
         roomId: room.id,

@@ -10,10 +10,9 @@ export interface SampleStorage {
   storageConditions: {
     ageMin: number;
     ageMax: number;
-    cityId: string;
-    cityDistrictId: string;
-    companyId: string;
-    vistionDefectId: string;
+    patientDistrictId: string;
+    patientCompanyId: string;
+    visionDefectId: string;
   },
   testSamplesIds: string[];
 }

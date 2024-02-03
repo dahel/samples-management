@@ -1,19 +1,17 @@
 import sampleStorages from "database/sampleStorages";
 import { Patient } from "types/patient.type";
+import { addSample } from 'database/testSamples';
+import { TestSample } from "types/test-sample.type";
+import { SampleStorage } from "types/sampleStorage.type";
 
-type StorageConditions = {
-  ageMin: number,
-  ageMax: number,
-  patientCityId: string,
-  patientDistrictId: string,
-  patientCompanyId: string,
-  vistionDefectId: string
-}
+// todo rename all sample to testSample
+
+type StorageConditions = SampleStorage['storageConditions'];
 
 type ConditionResolver = (sample: Patient, conditions: StorageConditions) => boolean;
 
 const ageCheck: ConditionResolver = (sample, conditions) => {
-  return sample.age <= conditions.ageMin && sample.age <= conditions.ageMax;
+  return sample.age >= conditions.ageMin && sample.age <= conditions.ageMax;
 }
 
 const matchExactCheck = (sampleKey: keyof Patient, storageKey: keyof StorageConditions): ConditionResolver => (sample, conditions) => {
@@ -24,10 +22,10 @@ const resolvers = [
   ageCheck,
   matchExactCheck('districtId', 'patientDistrictId'),
   matchExactCheck('companyId', 'patientCompanyId'),
-  matchExactCheck('visionDefectId', 'vistionDefectId'),
+  matchExactCheck('visionDefectId', 'visionDefectId'),
 ]
 
-const sampleStorageResolver = (sample: Patient) => {
+const resolveSampleStorage = (sample: Patient): SampleStorage => {
   return sampleStorages.find(storage => {
     return !resolvers.some(resolver => {
       return !resolver(sample, storage.storageConditions)
@@ -38,14 +36,15 @@ const sampleStorageResolver = (sample: Patient) => {
 
 export async function POST(req: Request) {
   const params = await req.json();
+  const storage = resolveSampleStorage(params);
 
-  console.log('############################## params');
-  console.log(params);
+  if (!storage) {
+    // todo handle that error
+    return Response.json({ status: 400, error: 'Cannot resolve storage'}, { status: 422 });
+  }
 
-  const storage = sampleStorageResolver(params);
-
-  console.log('############################## storage');
-  console.log(storage);
-
-  return Response.json({ status: 200, data: {} });
+  return Response.json({ data: {
+    ...params,
+    storage,
+  }});
 }

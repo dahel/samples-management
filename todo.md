@@ -9,3 +9,5 @@ dodać do założeń:
 
 // lab-b room-a ma wszystko z praga
 // lab-b room-b ma wszysto z tarchomina
+
+zostały stworzone przedziały wiekowe

@@ -15,7 +15,7 @@ const sampleStorages = [
       ageMax: 12,
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: []
   },
@@ -30,7 +30,7 @@ const sampleStorages = [
       ageMax: 17,
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: [],
   },
@@ -45,7 +45,7 @@ const sampleStorages = [
       ageMax: 100,
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: [],
   },
@@ -60,7 +60,7 @@ const sampleStorages = [
       ageMax: 100,
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-2'
+      visionDefectId: 'vision-defect-2'
     },
     testSamplesIds: [],
   },
@@ -75,7 +75,7 @@ const sampleStorages = [
       ageMax: 100,
       patientDistrictId: 'winogrady',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-3'
+      visionDefectId: 'vision-defect-3'
     },
     testSamplesIds: [],
   },
@@ -90,7 +90,7 @@ const sampleStorages = [
       ageMax: 12,
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: [],
   },
@@ -105,7 +105,7 @@ const sampleStorages = [
       ageMax: 17,
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: [],
   },
@@ -120,7 +120,7 @@ const sampleStorages = [
       ageMax: 100,
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-1'
+      visionDefectId: 'vision-defect-1'
     },
     testSamplesIds: [],
   },
@@ -135,7 +135,7 @@ const sampleStorages = [
       ageMax: 100,
       patientDistrictId: 'praga',
       patientCompanyId: 'company-a',
-      vistionDefectId: 'vision-defect-2'
+      visionDefectId: 'vision-defect-2'
     },
     testSamplesIds: [],
   },

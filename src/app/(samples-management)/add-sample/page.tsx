@@ -1,4 +1,4 @@
-import SampleForm from "app/add-sample/sampleForm/SampleForm";
+import SampleForm from "app/(samples-management)/add-sample/sampleForm/SampleForm";
 import { PatientLocation } from "types/patientLocation.type";
 import { PatientCompany } from "types/patientCompany.type";
 import { VisionDefect } from "types/visionDefect.type";

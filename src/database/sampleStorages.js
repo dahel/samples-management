@@ -14,15 +14,16 @@ const generateConditionsCombinations = (conditions) => {
     return [[]]
   }
   let [current, ...rest] = conditions;
-  let combinations = generateConditionsCombinations(rest)
+  let combinations = generateConditionsCombinations(rest);
+
   return current.values.reduce((a, string) => {
     return [ ...a, ...combinations.map(combination => [string, ...combination])];
-  }, [])
+  }, []);
 }
 
 const combinations = generateConditionsCombinations(conditions);
 
-const sampleStorages = combinations.map(([age, patientDistrictId, patientCompanyId, vistionDefectId ], index) => {
+const sampleStorages = combinations.map(([age, patientDistrictId, patientCompanyId, visionDefectId ], index) => {
   const laboratory = laboratories.find(lab => {
     return lab.rooms.find(room => {
       return room.patientDistrictId === patientDistrictId;
@@ -33,13 +34,12 @@ const sampleStorages = combinations.map(([age, patientDistrictId, patientCompany
   })
 
   return {
-      id: `${index + 1}`,
       storageConditions: {
         ageMin: age.ageMin,
         ageMax: age.ageMax,
         patientDistrictId,
         patientCompanyId,
-        vistionDefectId,
+        visionDefectId,
       },
       location: {
         laboratory,
@@ -55,146 +55,11 @@ const sortedStorages = [
   ...sampleStorages.filter(storage => {
     return storage.location.laboratory.id === laboratories[1].id
   })
-]
-
-// const sampleStorages = [
-//   {
-//     id: '1',
-//     location: {
-//       laboratoryId: 'lab-a',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 0,
-//       ageMax: 12,
-//       patientDistrictId: 'winogrady',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: []
-//   },
-//   {
-//     id: '2',
-//     location: {
-//       laboratoryId: 'lab-a',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 13,
-//       ageMax: 17,
-//       patientDistrictId: 'winogrady',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '3',
-//     location: {
-//       laboratoryId: 'lab-a',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 18,
-//       ageMax: 100,
-//       patientCityId: 'poznan',
-//       patientDistrictId: 'winogrady',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '4',
-//     location: {
-//       laboratoryId: 'lab-a',
-//       roomId: 'room-b',
-//     },
-//     storageConditions: {
-//       ageMin: 18,
-//       ageMax: 100,
-//       patientDistrictId: 'winogrady',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-2'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '5',
-//     location: {
-//       laboratoryId: 'lab-a',
-//       roomId: 'room-b',
-//     },
-//     storageConditions: {
-//       ageMin: 18,
-//       ageMax: 100,
-//       patientDistrictId: 'winogrady',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-3'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '6',
-//     location: {
-//       laboratoryId: 'lab-b',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 0,
-//       ageMax: 12,
-//       patientDistrictId: 'praga',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '7',
-//     location: {
-//       laboratoryId: 'lab-b',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 13,
-//       ageMax: 17,
-//       patientDistrictId: 'praga',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '8',
-//     location: {
-//       laboratoryId: 'lab-b',
-//       roomId: 'room-a',
-//     },
-//     storageConditions: {
-//       ageMin: 18,
-//       ageMax: 100,
-//       patientCityId: 'warsaw',
-//       patientDistrictId: 'praga',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-1'
-//     },
-//     testSamplesIds: [],
-//   },
-//   {
-//     id: '9',
-//     location: {
-//       laboratoryId: 'lab-b',
-//       roomId: 'room-b',
-//     },
-//     storageConditions: {
-//       ageMin: 18,
-//       ageMax: 100,
-//       patientDistrictId: 'praga',
-//       patientCompanyId: 'company-a',
-//       vistionDefectId: 'vision-defect-2'
-//     },
-//     testSamplesIds: [],
-//   },
-// ];
+].map((storage, index) => {
+  return {
+    id: `${index + 1}`,
+    ...storage,
+  }
+});
 
 export default sortedStorages;

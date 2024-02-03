@@ -6,11 +6,11 @@ const patientsLocations = [
     districts: [
       {
         id: 'wilda',
-        name: 'Wilda'
+        name: 'Poznań - Wilda'
       },
       {
         id: 'winogrady',
-        name: 'Winogrady'
+        name: 'Poznań - Winogrady'
       },
     ]
   },
@@ -20,11 +20,11 @@ const patientsLocations = [
     districts: [
       {
         id: 'praga',
-        name: 'Praga'
+        name: 'Warszawa - Praga'
       },
       {
         id: 'tarchomin',
-        name: 'Tarchomin'
+        name: 'Warszawa - Tarchomin'
       },
     ]
   }
