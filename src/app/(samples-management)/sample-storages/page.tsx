@@ -8,7 +8,6 @@ import { PatientLocation } from "types/patientLocation.type";
 import { VisionDefect } from "types/visionDefect.type";
 
 export default async function SampleStorages() {
-  console.log('############################## rendering SampleStorages');
   const { data: sampleStorages } = await fetchEndpointData<SampleStorage[]>('sample-storages');
 
   return (
@@ -47,5 +46,3 @@ export default async function SampleStorages() {
     </div>
   );
 }
-
-export const revalidate = 0;

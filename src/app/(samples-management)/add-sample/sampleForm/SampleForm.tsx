@@ -54,9 +54,12 @@ const SampleForm = ({ companies, locations, visionDefects }: Props) => {
   const onSubmit: SubmitHandler<Patient> = patientData => {
     mutation.mutate(patientData, {
       onSuccess: () => {
-        router.refresh();
-      }
-    })
+       
+      },
+      onSettled: () => {
+      },
+    });
+    router.refresh();
   };
   // todo prettier fo single quotes
   useWatch({ control, name: "cityId" });
