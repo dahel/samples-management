@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Flex} from "next/font/google";
-import Navbar from "./_components/navbar/Navbar";
-import Providers from "./_utils/Providers";
+import Navbar from "app/_components/navbar/Navbar";
+import Providers from "app/_utils/Providers";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import "./globals.css";
 

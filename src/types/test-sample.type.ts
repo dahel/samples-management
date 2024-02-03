@@ -1,7 +1,6 @@
 import { Patient } from "./patient.type";
 
-export interface TestSample {
+export interface TestSample extends Patient {
   id: string;
   storageId: string;
-  patient: Patient;
 }

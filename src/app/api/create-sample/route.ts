@@ -1,10 +1,7 @@
 import sampleStorages from "database/sampleStorages";
 import { Patient } from "types/patient.type";
 import { SampleStorage } from "types/sampleStorage.type";
-import { addTestSample } from 'database/testSamples';
-import { revalidateTag, revalidatePath } from 'next/cache'
-
-// todo rename all sample to testSample
+import { saveSample } from "app/_utils/mongoClient";
 
 type StorageConditions = SampleStorage['storageConditions'];
 
@@ -39,29 +36,14 @@ export async function POST(req: Request) {
   const storage = resolveSampleStorage(params);
 
   if (!storage) {
-    // todo handle that error with message about bad age
     return Response.json({ status: 400, error: 'Cannot resolve storage'}, { status: 422 });
   }
 
-  const sample = {
-    ...params,
-    storage,
-  }
-
-  addTestSample({
+  await saveSample({
     ...params,
     storageId: storage.id
   });
 
-  // revalidateTag('sample-storages');
-  revalidatePath('sample-storages');
-  // console.log('############################## will call revalidate page');
-  revalidatePath('/sample-storages', 'page');
-  revalidatePath('sample-storages', 'page');
-  revalidatePath('/search', 'page');
-  revalidatePath('/search', 'layout');
-  revalidatePath('search', 'page');
-  revalidatePath('search', 'layout');
 
   return Response.json({ data: {
     sample: {

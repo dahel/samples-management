@@ -8,6 +8,7 @@ import Select from 'app/_components/select/select';
 import { VisionDefect } from 'types/visionDefect.type';
 import { Patient } from 'types/patient.type';
 import useCreateSample from 'app/hooks/useCreateSample';
+import { useRouter } from 'next/navigation'
 
 // todo remove unused packages from package.json
 
@@ -46,11 +47,17 @@ const SampleForm = ({ companies, locations, visionDefects }: Props) => {
       visionDefectId: 'vision-defect-1'
     }
   });
+  const router = useRouter();
   const mutation = useCreateSample();
   const cityId = getValues('cityId');
   const districts = locations.find(location => location.id === cityId)?.districts || [];
-  const onSubmit: SubmitHandler<Patient> = patientData => mutation.mutate(patientData);
-
+  const onSubmit: SubmitHandler<Patient> = patientData => {
+    mutation.mutate(patientData, {
+      onSuccess: () => {
+        router.refresh();
+      }
+    })
+  };
   // todo prettier fo single quotes
   useWatch({ control, name: "cityId" });
 

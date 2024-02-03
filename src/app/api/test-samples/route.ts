@@ -1,5 +1,7 @@
-import { getTestSamples } from 'database/testSamples';
+import { getSamples } from "app/_utils/mongoClient";
 
 export async function GET() {
-  return Response.json({ data: getTestSamples() });
+  const testSamples = await getSamples();
+
+  return Response.json({ data: testSamples });
 }
