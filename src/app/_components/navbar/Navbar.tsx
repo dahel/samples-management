@@ -13,8 +13,8 @@ const navigationItems = [
     href: '/search'
   },
   {
-    label: 'Samples Locations',
-    href: '/racks'
+    label: 'Samples Storages',
+    href: '/sample-storages'
   },
 ]
 

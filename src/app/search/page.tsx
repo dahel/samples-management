@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Rack } from "types/rack.type";
+import { Rack } from "types/sampleStorage.type";
 import { RestApiResponse } from "types/response.type";
 
 export default async function Search() {

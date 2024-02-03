@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Roboto_Flex} from "next/font/google";
 import Navbar from "./_components/navbar/Navbar";
+import Providers from "./_utils/Providers";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import "./globals.css";
+
+// todo make import paths with aliases
+// todo make file name consistent (upper case, dashes end so on) - daj z małych liter i zamiast camelCase daj myślnik
 
 const inter = Roboto_Flex({ subsets: ["latin"] });
 
@@ -16,11 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
-        <h1 className="text-2xl p-8 text-center">Samples Management</h1>
-        <Navbar />
-        <div className="p-10 flex justify-center">{children}</div>
-      </body>
+      <Providers>
+        <body className={`${inter.className}`}>
+        <ReactQueryDevtools />
+          <h1 className="text-2xl p-8 text-center">Samples Management</h1>
+          <Navbar />
+          <div className="p-10 flex justify-center">{children}</div>
+        </body>
+      </Providers>
     </html>
   );
 }
