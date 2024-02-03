@@ -28,7 +28,7 @@ const ValidationError= ({ children }: { children: React.ReactNode }) => {
   return <span className="absolute bottom-0 right-1 label-text-alt text-error">{children}</span>
 }
 
-const SampleForm1 = ({ companies, locations, visionDefects }: Props) => {
+const SampleForm = ({ companies, locations, visionDefects }: Props) => {
   const {
     register,
     handleSubmit,
@@ -115,26 +115,6 @@ const SampleForm1 = ({ companies, locations, visionDefects }: Props) => {
     </div>
     </div>
   );
-}
-
-const SampleForm = () => {
-  const zbior =  [ 
-    { ent: 'districId', vals: [ 'winogrady', 'wilda', 'praga', 'tarchomin' ] },
-    { ent: 'company', vals: [ 'company-a', 'company-b' ] },
-    { ent: 'visionDefect', vals: [ 'vision-defect-1', 'vision-defect-2' ] } 
-  ]
-  
-  function getCombinations(arr: any){
-    if (arr.length === 0) return [[]]
-    let [current, ...rest] = arr
-    let combinations = getCombinations(rest)
-    return current.vals.reduce((a, string) => 
-        [ ...a, ...combinations.map(c => [string, ...c])], [])
-  }
-  let c = getCombinations(zbior)
-  console.log(c)
-
-  return <div>sample form</div>
 }
 
 export default SampleForm;

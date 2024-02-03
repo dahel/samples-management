@@ -26,7 +26,7 @@ export default function RootLayout({
         <ReactQueryDevtools />
           <h1 className="text-2xl p-8 text-center">Samples Management</h1>
           <Navbar />
-          <div className="p-10 flex justify-center">{children}</div>
+          <div className="p-10 justify-center">{children}</div>
         </body>
       </Providers>
     </html>

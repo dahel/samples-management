@@ -9,11 +9,11 @@ export default async function AddSample() {
   // todo fetch in parralell
   // todo handle errors
   const { data: companies } = await fetchEndpointData<PatientCompany[]>('companies');
-  const { data: locations } = await fetchEndpointData<PatientLocation[]>('locations');
+  const { data: locations } = await fetchEndpointData<PatientLocation[]>('patient-locations');
   const { data: visionDefects } = await fetchEndpointData<VisionDefect[]>('vision-defects');
 
   return (
-    <div>
+    <div className="flex justify-center">
       <SampleForm companies={companies} locations={locations} visionDefects={visionDefects} />
     </div>  
   );

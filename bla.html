@@ -1,0 +1,104 @@
+<html>
+  <script>
+
+const conditions =  [ 
+  { key: 'age', values: [ {ageMin: 0, ageMax: 12}, {ageMin: 13, ageMax: 17}, {ageMin: 18, ageMax: 120} ] },
+  { key: 'districId', values: [ 'winogrady', 'wilda', 'praga', 'tarchomin' ] },
+  { key: 'companyId', values: [ 'company-a', 'company-b' ] },
+  { key: 'visionDefectId', values: [ 'vision-defect-1', 'vision-defect-2' ] },
+]
+
+const generateConditionsCombinations = (conditions) => {
+  if (conditions.length === 0) return [[]]
+  let [current, ...rest] = conditions;
+  let combinations = generateConditionsCombinations(rest)
+  return current.values.reduce((a, string) => {
+    return [ ...a, ...combinations.map(c => [string, ...c])];
+  }, [])
+}
+
+const combinations = generateConditionsCombinations(conditions);
+
+// const col = combinations.map((combination) => {
+//   console.log(combination)
+// })
+
+const laboratories = [
+  {
+    id: 'lab-a',
+    name: 'Laboratory A',
+    address: 'ul. Nowowiejskiego 5',
+    city: 'Poznan',
+    rooms: [
+      {
+        id: 'room-a',
+        name: 'Room A',
+        patientDistrictId: 'winogrady',
+        // wszystko z winogrady
+      },
+      {
+        id: 'room-b',
+        name: 'Room B',
+        patientDistrictId: 'wilda',
+        // wszystko z wildy
+      },
+    ]
+  },
+  {
+    id: 'lab-b',
+    name: 'Laboratory B',
+    address: 'ul. Wiejska 6',
+    city: 'Poznan',
+    rooms: [
+      {
+        id: 'room-a',
+        name: 'Room A',
+        patientDistrictId: 'praga',
+        // wszystko z pragi
+      },
+      {
+        id: 'room-b',
+        name: 'Room B',
+        patientDistrictId: 'tarchomin',
+        // wszystko z tarchomina
+      },
+    ]
+  },
+];
+
+const collection = combinations.map(([age, patientDistrictId, patientCompanyId, vistionDefectId ]) => {
+  const laboratory = laboratories.find(lab => {
+    return lab.rooms.find(room => {
+      return room.patientDistrictId === patientDistrictId;
+    })
+  });
+  const room = laboratory.rooms.find(room => {
+    return room.patientDistrictId === patientDistrictId;
+  })
+
+  return {
+      ageMin: age.ageMin,
+      ageMax: age.ageMax,
+      patientDistrictId,
+      patientCompanyId,
+      vistionDefectId,
+      location: {
+        laboratoryId: laboratory.id,
+        roomId: room.id,
+      }
+  }
+});
+
+// lab-a room-a ma wszystko z winogrady
+// lab-a room-b ma wszystko z wilda
+
+// lab-b room-a ma wszystko z praga
+// lab-b room-b ma wszysto z tarchomina
+
+console.log('############################## collection', collection);
+
+
+
+
+  </script>
+</html>
