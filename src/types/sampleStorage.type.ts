@@ -14,5 +14,8 @@ export interface SampleStorage {
     patientCompanyId: string;
     visionDefectId: string;
   },
-  testSamplesIds: string[];
+  patientDisctrictName: string;
+  visionDefectName: string;
+  patientCompanyName: string;
+  samplesAmount: number;
 }

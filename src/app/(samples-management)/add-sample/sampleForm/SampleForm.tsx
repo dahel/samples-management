@@ -39,9 +39,9 @@ const SampleForm = ({ companies, locations, visionDefects }: Props) => {
     defaultValues: {
       firstname: 'asdf',
       lastname: 'asdfsadf',
-      age: 33,
+      age: 11,
       cityId: 'poznan',
-      districtId: 'wilda',
+      districtId: 'winogrady',
       companyId: 'company-a',
       visionDefectId: 'vision-defect-1'
     }
