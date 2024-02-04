@@ -12,7 +12,6 @@ import { useRouter } from 'next/navigation'
 import { ToastContainer, toast } from 'react-toastify';
 import { Dialog } from '@headlessui/react'
 import { useState } from 'react'
-import Modal from 'react-modal';
 // todo remove unused packages from package.json
 
 

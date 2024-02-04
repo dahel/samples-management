@@ -42,7 +42,7 @@ export async function POST(req: Request) {
   await saveSample({
     ...params,
     storageId: storage.id
-  });
+  })
 
 
   return Response.json({ data: {
