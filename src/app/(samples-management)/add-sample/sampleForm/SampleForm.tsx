@@ -9,14 +9,27 @@ import { VisionDefect } from 'types/visionDefect.type';
 import { Patient } from 'types/patient.type';
 import useCreateSample from 'app/hooks/useCreateSample';
 import { useRouter } from 'next/navigation'
-
+import { ToastContainer, toast } from 'react-toastify';
+import { Dialog } from '@headlessui/react'
+import { useState } from 'react'
+import Modal from 'react-modal';
 // todo remove unused packages from package.json
+
+
 
 interface Props {
   companies: PatientCompany[],
   locations: PatientLocation[],
   visionDefects: VisionDefect[],
 }
+
+const Msg = ({ closeToast, toastProps }: any) => (
+  <div>
+    Lorem ipsum dolor {toastProps.position}
+    <button>Retry</button>
+    <button onClick={closeToast}>Close</button>
+  </div>
+);
 
 const FormField = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -47,14 +60,18 @@ const SampleForm = ({ companies, locations, visionDefects }: Props) => {
       visionDefectId: 'vision-defect-1'
     }
   });
+  let [isOpen, setIsOpen] = useState(true)
   const router = useRouter();
   const mutation = useCreateSample();
   const cityId = getValues('cityId');
   const districts = locations.find(location => location.id === cityId)?.districts || [];
   const onSubmit: SubmitHandler<Patient> = patientData => {
     mutation.mutate(patientData, {
-      onSuccess: () => {
-       
+      onSuccess: ({ data }) => {
+        const { laboratory, room } = data.sample.storage.location
+        // @ts-ignore
+        document.getElementById('my_modal_1').showModal()
+        // https://headlessui.com/react/dialog
       },
       onSettled: () => {
       },
@@ -123,6 +140,20 @@ const SampleForm = ({ companies, locations, visionDefects }: Props) => {
       <button type="submit" className="btn">Add</button>
     </form>
     </div>
+
+    <dialog id="my_modal_1" className="modal">
+  <div className="modal-box">
+    <h3 className="font-bold text-lg">Hello!</h3>
+    <p className="py-4">Press ESC key or click the button below to close</p>
+    <div className="modal-action">
+      <form method="dialog">
+        {/* if there is a button in form, it will close the modal */}
+        <button className="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
     </div>
   );
 }

@@ -3,6 +3,9 @@ import { Roboto_Flex} from "next/font/google";
 import Navbar from "app/_components/navbar/Navbar";
 import Providers from "app/_utils/Providers";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 
 // todo make import paths with aliases
@@ -23,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
         <body className={`${inter.className}`}>
+          <ToastContainer />
         <ReactQueryDevtools />
           <h1 className="text-2xl p-8 text-center">Samples Management</h1>
           <Navbar />
