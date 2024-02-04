@@ -39,16 +39,19 @@ export async function POST(req: Request) {
     return Response.json({ status: 400, error: 'Cannot resolve storage'}, { status: 422 });
   }
 
-  await saveSample({
+  const sampleId = await saveSample({
     ...params,
     storageId: storage.id
-  })
+  });
+
+  console.log('############################## sampleId', sampleId);
 
 
   return Response.json({ data: {
     sample: {
       ...params,
-      storage
+      id: sampleId,
+      location: storage.location
     }
   }});
 }

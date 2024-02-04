@@ -29,6 +29,8 @@ export const saveSample = async (params: TestSample) => {
   await sample.save();
 
   await mongoose.disconnect();
+
+  return sample._id;
 }
 
 export const getSamples = async () => {

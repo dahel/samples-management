@@ -1,13 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Patient } from "types/patient.type";
 import { RestApiResponse } from "types/response.type";
-import { TestSample } from "types/test-sample.type";
+import { SampleWithLocationDetails } from "types/test-sample.type";
+
+interface ResponseData {
+  sample: SampleWithLocationDetails
+}
 
 const useCreateSample = () => {
-  // const queryClient = useQueryClient()
-
   return useMutation({
-    mutationFn: async (patient: Patient) => {
+    mutationFn: async (patient: Patient): Promise<RestApiResponse<ResponseData>> => {
       const response  = await fetch('api/create-sample', {
         method: 'POST',
         body: JSON.stringify(patient),
@@ -20,10 +22,6 @@ const useCreateSample = () => {
       }
     
       return response.json();
-    },
-    onSuccess: () => {
-      // todo store keys somewhere
-      // queryClient.invalidateQueries({ queryKey: ['cart-items'] })
     }
   });
 }
