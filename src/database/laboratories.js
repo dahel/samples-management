@@ -9,7 +9,6 @@ const laboratories = [
         id: 'room-a',
         name: 'Room A',
         patientDistrictId: 'winogrady',
-        // wszystko z winogrady
       },
       {
         id: 'room-b',
@@ -28,7 +27,6 @@ const laboratories = [
         id: 'room-a',
         name: 'Room A',
         patientDistrictId: 'praga',
-        // wszystko z pragi
       },
       {
         id: 'room-b',
