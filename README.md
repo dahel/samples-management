@@ -83,6 +83,7 @@ The goal of the system is to provide a way to create test sample and to automati
   - eslint + prettier for code quality
 
  ## What would be nice to have
+  - RWD
   - creating samples in a batch
   - error handling (ErrorBoundaries, api errors)
   - pagination of Samples Storages list
