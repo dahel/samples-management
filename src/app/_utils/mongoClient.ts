@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { type Model } from 'mongoose';
 import type { TestSample } from 'types/test-sample.type';
 
 export const disconnect = async () => {
@@ -18,8 +18,8 @@ const TestSampleSchema = new Schema<TestSample>({
   storageId: String,
 });
 
-export const TestSampleModel =
-  mongoose.models.TestSample || mongoose.model('TestSample', TestSampleSchema);
+export const TestSampleModel: Model<TestSample, {}, { _doc: TestSample & { _id: mongoose.Types.ObjectId} }> =
+  mongoose.models.TestSample || mongoose.model<TestSample>('TestSample', TestSampleSchema);
 
 export const saveSample = async (params: TestSample) => {
   await mongoose.connect(process.env.MONGODB_URL);
@@ -61,5 +61,5 @@ export const getSample = async (id: string) => {
   return {
     ...testSampleResult[0]._doc,
     id: testSampleResult[0]._doc._id,
-  } as TestSample;
+  };
 };

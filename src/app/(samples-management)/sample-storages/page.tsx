@@ -1,9 +1,8 @@
-import type { SampleStorage } from 'types/sampleStorage.type';
 import fetchEndpointData from 'app/_utils/fetchEndpointData';
 
 export default async function SampleStorages() {
   const { data: sampleStorages } =
-    await fetchEndpointData<SampleStorage[]>('sample-storages');
+    await fetchEndpointData('sample-storages');
 
   return (
     <div>
